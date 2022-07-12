@@ -1,4 +1,3 @@
-import requests
 from flask import Flask
 from pip._internal.resolution.resolvelib import candidates
 from utils import load_candidates_json, candidates_format, get_candidate_id, get_candidate_skill
@@ -34,8 +33,8 @@ def page_candidate(uid):
 def page_skills(skill):
   '''Поиск кандидата по навыку'''
   skill_lower = skill.lower()
-  candidate: list[dict] = get_candidate_skill(skill_lower)
+  candidates: list[dict] = get_candidate_skill(skill_lower)
   result = candidates_format(candidates)
   return result
 
-app.run(host='0.0.0.0', port=8000)
+app.run()

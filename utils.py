@@ -1,10 +1,10 @@
-import result as result
+import json
 from flask import json
 from pip._internal.resolution.resolvelib import candidates
 
 
 def load_candidates_json() -> list[dict]: # загрузит данные из файла
-    with open(candidates.json, 'r', encoding='utf-8') as file:
+    with open('candidates.json', 'r', encoding='utf-8') as file:
         result = json.load(file)
         return result
 

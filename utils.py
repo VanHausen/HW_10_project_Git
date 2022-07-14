@@ -1,17 +1,19 @@
 import json
 from flask import json
-from pip._internal.resolution.resolvelib import candidates
 
 
 def load_candidates_json() -> list[dict]: # загрузит данные из файла
+    """
+
+    :rtype: object
+    """
     with open('candidates.json', 'r', encoding='utf-8') as file:
         result = json.load(file)
         return result
 
 
 def candidates_format(candidates: list[dict]) -> str:
-    '''Форматирование списка кандидатов'''
-    candidates: list[dict] = load_candidates_json()
+    """Форматирование списка кандидатов"""
     result = "<pre>"
 
     for candidate in candidates:
@@ -28,10 +30,10 @@ def get_all() -> list[dict]:
     return load_candidates_json()
 
 
-def get_candidate_id(uid: int) -> dict:
+def get_candidate_id(uid: int) -> dict | None:
     candidates = get_all()
     for candidate in candidates:
-        if candidate['id'] == uid:
+        if candidate['pk'] == uid:
             return candidate
     return None
 
